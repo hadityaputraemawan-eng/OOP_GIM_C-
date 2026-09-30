@@ -12,3 +12,4 @@ D:\oop\ProyekKu\obj\Debug\net10.0\refint\ProyekKu.dll
 D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.pdb
 D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.genruntimeconfig.cache
 D:\oop\ProyekKu\obj\Debug\net10.0\ref\ProyekKu.dll
+D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.sourcelink.json

@@ -63,8 +63,15 @@ namespace KerangkaGame
     {
         static void Main(string[] args)
         {
-            Karakter player1 = new Karakter("Haditya", "sehat", "m40");//membuat objek
-            player1.getData();
+            Karakter player1 = new Karakter("Haditya", 100, 10);//player utama
+            Karakter musuh = new Karakter("aditya",100,100);
+
+            //interasksi
+            player1.serang(musuh);
+            musuh.serang(player1);
+            
+
+            
 
             //List<Karakter> daftarHero = new List<Karakter>(); //array menyimpan pahlawan
             //Karakter player1 = new Karakter();
