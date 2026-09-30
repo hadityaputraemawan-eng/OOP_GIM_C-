@@ -1,0 +1,91 @@
+//game
+//genre : fighting
+//Karakter : nama, kesehatan
+
+using System;
+using System.Dynamic;
+namespace KerangkaGame
+{
+    class Karakter
+    {
+        public int totalsenjata, power;
+
+        public string nama{get; private set;}
+        public int kesehatan{get; private set;}
+        public string senjata{get; private set;}
+
+        public Karakter(string nama,string kesehatan,string senjata)
+        {
+            this.nama=nama;
+            this.kesehatan=kesehatan;
+            this.senjata=senjata;
+
+        }//membuat kosntruktor
+
+
+        // public void setData(string namaBaru, string statusSehat, string senjata, int totalsenjata, int power)
+        // {
+        //     this.nama = namaBaru;
+        //     this.kesehatan = statusSehat;
+        //     this.senjata = senjata;
+        //     this.totalsenjata = totalsenjata;
+        //     this.power = power;
+        // }
+
+        public void getData()
+        {
+            Console.WriteLine(nama);
+            Console.WriteLine(kesehatan);
+            Console.WriteLine(senjata);
+            Console.WriteLine(totalsenjata);
+            Console.WriteLine(power);
+            Console.WriteLine();
+        }
+
+        public void getData()
+        {
+            Console.WriteLine($"karakter{nama}");
+        }
+    }
+
+
+    class MainProgram
+    {
+        static void Main(string[] args)
+        {
+
+           Karakter player1 = new Karakter("Haditya putra ","sehat","m40");//membuat objek
+            player1.getData(); 
+
+           
+
+           
+
+
+// kode sebelumnya
+    //     List<Karakter> daftarHero = new List<Karakter>(); //array menyimpan pahlawan
+    //     Karakter player1 = new Karakter();
+    //     player1.setData("Archer", "Sehat", "Katana", 1, 10);
+    //     // player1.getData();
+
+    //     Karakter player2 = new Karakter();
+    //     player2.setData("Ford", "Kritis", "m4", 2, 50);
+    //     // player2.getData();
+        
+    //     //objek baru musuh
+    //     Karakter musuh = new Karakter();
+    //     musuh.setData("Bjorka", "Sehat", "Tangkos", 10, 90);
+    //     musuh.getData();
+
+    //     daftarHero.Add(player1);
+    //     daftarHero.Add(player2);
+
+    //     //menampilkan data dari array, foreach
+    //     foreach(Karakter player in daftarHero)
+    //     {
+    //         player.getData();
+    //     }
+    //     }
+    }
+}
+}
