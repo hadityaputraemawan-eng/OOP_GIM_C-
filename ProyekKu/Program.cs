@@ -12,13 +12,25 @@ namespace KerangkaGame
         //enskaplusasi
 
         public string nama { get; private set; }
-        public string kesehatan { get; private set; }
-        public string senjata { get; private set; }
-        public Karakter(string nama, string kesehatan, string senjata)
+        public int kesehatan { get; private set; }
+        public int senjata { get; private set; }
+        public Karakter(string nama, int kesehatan, int senjata)
         {
             this.nama = nama;
             this.kesehatan = kesehatan;
             this.senjata = senjata;
+        }
+
+        public void serang(Karakter target)
+        {
+           Console.WriteLine("==> mulai serangan"); 
+           target.terimaserangan(this.senjata);
+        }
+
+        public void terimaserangan(int jumlahSerangan)
+        {
+           kesehatan -= jumlahSerangan; 
+           Console.WriteLine($"{nama} diserang dengan {jumlahSerangan}.sisa kesehatan{kesehatan}");
         }
 
         //public void setData(string namaBaru, string statusSehat, string senjata, int totalsenjata, int power)
