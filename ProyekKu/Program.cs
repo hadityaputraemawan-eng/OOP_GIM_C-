@@ -16,7 +16,7 @@ namespace KerangkaGame
             this.nama = nama;
             this.kesehatan = kesehatan;
             this.senjata = senjata;
-            this.posisiSaatIni = 0; // Posisi awal otomatis mulai dari 0
+            this.posisiSaatIni = 0;
         }
 
         public void Serang(Karakter target)
@@ -52,25 +52,22 @@ namespace KerangkaGame
                 Console.WriteLine($"{nama} tidak disembuhkan.");
             }
             else
-            {   
+            {
                 Console.WriteLine("Pilihan tidak valid.");
             }
         }
 
         public void Aksi(int posisiBaru)
         {
-            int posisiAwal = this.posisiSaatIni;
             this.posisiSaatIni = posisiBaru;
-            int jarak = Math.Abs(posisiBaru - posisiAwal); //math itu untuk agar nilainya selalu positif
-
-            Console.WriteLine($"\n{nama} berpindah dari posisi {posisiAwal} ke posisi {posisiBaru} (Berpindah {jarak} langkah).");
+            Console.WriteLine("Posisi sekarang: " + posisiSaatIni);
         }
 
         public void getData()
         {
             Console.WriteLine($"Karakter : {nama}");
             Console.WriteLine($"Kesehatan : {kesehatan}");
-            Console.WriteLine($"senjata : {senjata}");
+            Console.WriteLine($"Senjata : {senjata}");
             Console.WriteLine($"Posisi Sekarang : {posisiSaatIni}");
         }
     }
@@ -79,25 +76,45 @@ namespace KerangkaGame
     {
         static void Main(string[] args)
         {
-           
-            Karakter player1 = new Karakter("hadit", 100, 10);
+            Karakter player1 = new Karakter("Hadit", 100, 10);
             Karakter musuh1 = new Karakter("kosmos", 80, 50);
 
             player1.Serang(musuh1);
             musuh1.Serang(player1);
             player1.Healing();
 
+            Console.WriteLine("\n=== DATA KARAKTER ===");
+            player1.getData();
 
-            
-                Console.Write("\nMasukkan posisi tujuan/baru untuk " + player1.nama + ": ");
-                if (int.TryParse(Console.ReadLine(), out int posisiTujuan))
+            Console.WriteLine("\n=== MEMBACA TOMBOL KEYBOARD ===");
+            Console.WriteLine("Panah kanan (->) : Menambah posisi 2");
+            Console.WriteLine("Panah kiri (<-)  : Mengurangi posisi 1");
+            Console.WriteLine("Esc               : Permainan berhenti");
+            Console.WriteLine("Posisi awal: " + player1.posisiSaatIni);
+
+            bool bermain = true;
+
+            while (bermain)
+            {
+                ConsoleKeyInfo tombol = Console.ReadKey(true);
+
+                if (tombol.Key == ConsoleKey.RightArrow)
                 {
-                    player1.Aksi(posisiTujuan);
+                    player1.Aksi(player1.posisiSaatIni + 2);
                 }
-                else
+                else if (tombol.Key == ConsoleKey.LeftArrow)
                 {
-                    Console.WriteLine("Input tidak valid, harap masukkan angka!");
+                    player1.Aksi(player1.posisiSaatIni - 1);
+                }
+                else if (tombol.Key == ConsoleKey.Escape)
+                {
+                    bermain = false;
+                    Console.WriteLine("Permainan berhenti!");
                 }
             }
+
+            Console.WriteLine("\n=== PERMAINAN SELESAI ===");
+            player1.getData();
         }
     }
+}//ceneh
