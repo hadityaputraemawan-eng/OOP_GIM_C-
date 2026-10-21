@@ -16,7 +16,7 @@ namespace KerangkaGame
             this.nama = nama;
             this.kesehatan = kesehatan;
             this.senjata = senjata;
-            this.posisiSaatIni = 0;
+            this.posisiSaatIni = 0; // Posisi awal otomatis mulai dari 0
         }
 
         public void Serang(Karakter target)
@@ -59,15 +59,18 @@ namespace KerangkaGame
 
         public void Aksi(int posisiBaru)
         {
+            int posisiAwal = this.posisiSaatIni;
             this.posisiSaatIni = posisiBaru;
-            Console.WriteLine("Posisi sekarang: " + posisiSaatIni);
+            int jarak = posisiBaru - posisiAwal;
+
+            Console.WriteLine($"\n{nama} berpindah dari posisi {posisiAwal} ke posisi {posisiBaru} (Berpindah {jarak} langkah).");
         }
 
         public void getData()
         {
             Console.WriteLine($"Karakter : {nama}");
             Console.WriteLine($"Kesehatan : {kesehatan}");
-            Console.WriteLine($"Senjata : {senjata}");
+            Console.WriteLine($"senjata : {senjata}");
             Console.WriteLine($"Posisi Sekarang : {posisiSaatIni}");
         }
     }
@@ -83,38 +86,51 @@ namespace KerangkaGame
             musuh1.Serang(player1);
             player1.Healing();
 
-            Console.WriteLine("\n=== DATA KARAKTER ===");
-            player1.getData();
+            Console.WriteLine("\nMana yang Kamu Pilih?");
+            Console.WriteLine("1. perpindahan angka Manual");
+            Console.WriteLine("2. perpindahan menggunakan keyboard/Arraw");
+            Console.Write("Pilihanmu: ");
+            string pilihan = Console.ReadLine();
 
-            Console.WriteLine("\n=== MEMBACA TOMBOL KEYBOARD ===");
-            Console.WriteLine("Panah kanan (->) : Menambah posisi 2");
-            Console.WriteLine("Panah kiri (<-)  : Mengurangi posisi 1");
-            Console.WriteLine("Esc               : Permainan berhenti");
-            Console.WriteLine("Posisi awal: " + player1.posisiSaatIni);
-
-            bool bermain = true;
-
-            while (bermain)
+            if (pilihan == "1")
             {
-                ConsoleKeyInfo tombol = Console.ReadKey(true);
-
-                if (tombol.Key == ConsoleKey.RightArrow)
+                Console.Write("\nMasukkan posisi tujuan/baru untuk " + player1.nama + ": ");
+                if (int.TryParse(Console.ReadLine(), out int posisiTujuan))
                 {
-                    player1.Aksi(player1.posisiSaatIni + 2);
+                    player1.Aksi(posisiTujuan);
                 }
-                else if (tombol.Key == ConsoleKey.LeftArrow)
+                else
                 {
-                    player1.Aksi(player1.posisiSaatIni - 1);
-                }
-                else if (tombol.Key == ConsoleKey.Escape)
-                {
-                    bermain = false;
-                    Console.WriteLine("Permainan berhenti!");
+                    Console.WriteLine("Input tidak valid, harap masukkan angka!");
                 }
             }
+            else if (pilihan == "2")
+            {
+                Console.WriteLine("\nGunakan Panah Kanan (maju +2), Panah Kiri (mundur -1), atau Escape (keluar).");
+                bool sedangBermain = true;
+                while (sedangBermain)
+                {
+                   ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-            Console.WriteLine("\n=== PERMAINAN SELESAI ===");
-            player1.getData();
+                    if (keyInfo.Key == ConsoleKey.RightArrow)
+                    {
+                        player1.Aksi(player1.posisiSaatIni + 2);
+                    }
+                    else if (keyInfo.Key == ConsoleKey.LeftArrow)
+                    {
+                        player1.Aksi(player1.posisiSaatIni - 1);
+                    }
+                    else if (keyInfo.Key == ConsoleKey.Escape)
+                    {
+                        Console.WriteLine("\nPermainan berhenti.");
+                        sedangBermain = false;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Pilihan tidak valid!");
+            }
         }
     }
-}//ceneh
+}
