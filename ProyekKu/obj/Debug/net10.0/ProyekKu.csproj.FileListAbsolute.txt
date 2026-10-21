@@ -7,9 +7,9 @@ D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.GeneratedMSBuildEditorConfig.editorco
 D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.AssemblyInfoInputs.cache
 D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.AssemblyInfo.cs
 D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.csproj.CoreCompileInputs.cache
+D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.sourcelink.json
 D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.dll
 D:\oop\ProyekKu\obj\Debug\net10.0\refint\ProyekKu.dll
 D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.pdb
 D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.genruntimeconfig.cache
 D:\oop\ProyekKu\obj\Debug\net10.0\ref\ProyekKu.dll
-D:\oop\ProyekKu\obj\Debug\net10.0\ProyekKu.sourcelink.json
